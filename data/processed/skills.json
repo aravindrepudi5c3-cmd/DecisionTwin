@@ -1,0 +1,112 @@
+[
+  {
+    "id": "1fbbf838-939b-4db6-8d80-606aec6c15eb",
+    "name": "CI/CD",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "dc3ddf99-e572-447d-8746-fdf046236c1e",
+    "name": "Cloud",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "ba9d1f9f-84cb-4915-81c3-9464035745bd",
+    "name": "Data Analysis",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "4a30c69c-20be-45f5-baf7-c62e92f5c2bd",
+    "name": "Design Systems",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "1a98d630-00e1-437a-a01f-435cecfa89bd",
+    "name": "Docker",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "e4d21690-6d04-4194-b3cd-ab8d1aef18c4",
+    "name": "Git",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "b369fd89-36f6-4147-8d70-8043e5ed0b7c",
+    "name": "Infrastructure",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "e55fc1bd-19b4-4053-a9f6-79677819e8d4",
+    "name": "JavaScript",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "7cc28f24-0f8b-48dc-ac7a-3e9482a5dd5a",
+    "name": "Machine Learning",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "16404d80-f77a-4a4e-9c2c-656dbd01598f",
+    "name": "PostgreSQL",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "e8c38004-54dc-4c6d-b490-3b268423720c",
+    "name": "Project Management",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "8da94f66-e147-4ebd-87a5-c55cbaabcb30",
+    "name": "Prototyping",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "bb50d6d6-2586-4abb-9cf3-7bbec9a6cf83",
+    "name": "Python",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "cef5e2b7-b2d9-4726-ae3d-2375ec1c10f3",
+    "name": "Quality Assurance",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "c83c937e-c14e-49ab-aaa2-69af661a6c66",
+    "name": "REST API",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "af1afcdc-761d-4363-9564-936cd64ab711",
+    "name": "Resource Planning",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "65e28734-10ff-4a82-baf6-5f8c7bc88535",
+    "name": "Risk Management",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "1d5a3028-5a3c-41b3-bcd9-fc0e132bb3a6",
+    "name": "SQL",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "a91ffefa-b8f5-4da7-9d50-ae0f745de8a3",
+    "name": "Security",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "7407836d-35e6-41c7-8606-44584264096b",
+    "name": "Test Automation",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "5b4b2816-d056-48c5-8836-0d392e15ccee",
+    "name": "Testing",
+    "category": "Role-based prototype mapping"
+  },
+  {
+    "id": "2c5770fb-ed00-4e26-86d3-7e0948bfb662",
+    "name": "User Experience",
+    "category": "Role-based prototype mapping"
+  }
+]

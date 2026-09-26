@@ -1,0 +1,20 @@
+{
+  "_description": "DecisionTwin role-based skill mapping. These skills are prototype assumptions, not directly observed individual skills in the master CSV.",
+  "ML Engineer": ["Python", "Machine Learning", "SQL", "Data Analysis"],
+  "Backend Developer": ["Python", "REST API", "SQL", "PostgreSQL"],
+  "DevOps Engineer": ["Docker", "Cloud", "CI/CD", "Infrastructure"],
+  "Cloud Engineer": ["Cloud", "Infrastructure", "Docker", "CI/CD"],
+  "Software Developer": ["JavaScript", "Python", "SQL", "Git"],
+  "Senior Developer": ["JavaScript", "Python", "SQL", "Git"],
+  "Software Tester": ["Testing", "Test Automation", "Quality Assurance"],
+  "QA Engineer": ["Testing", "Test Automation", "Quality Assurance"],
+  "Data/AI Staff": ["Data Analysis", "Machine Learning", "Python"],
+  "Data Engineer": ["Python", "SQL", "Data Analysis", "Machine Learning"],
+  "ML Engineer": ["Python", "Machine Learning", "SQL", "Data Analysis"],
+  "Business Analyst": ["Data Analysis", "SQL", "Resource Planning", "Risk Management"],
+  "Product Manager": ["Project Management", "Resource Planning", "Risk Management"],
+  "Project Manager": ["Project Management", "Resource Planning", "Risk Management"],
+  "Security Engineer": ["Security", "Risk Management", "Infrastructure", "Cloud"],
+  "UI/UX Developer": ["JavaScript", "User Experience", "Prototyping", "Design Systems"],
+  "Manager": ["Project Management", "Resource Planning", "Risk Management"]
+}

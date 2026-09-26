@@ -1,0 +1,86 @@
+[
+  {
+    "id": "b263607c-74bb-416e-a2fb-4999dc6acb8f",
+    "project_id": "08dd35fe-5c96-41b5-8688-de0b72a54f16",
+    "name": "Baseline",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Current Allocation"
+  },
+  {
+    "id": "8320984e-c964-42d8-81fa-77283c30d47a",
+    "project_id": "c654c4e2-3d25-48f4-9fb2-f97a7bf2ac0c",
+    "name": "Demand Surge",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Custom Allocation"
+  },
+  {
+    "id": "5508e984-00f5-4ddf-a0d4-5ebf110eb161",
+    "project_id": "5e5e4426-16ef-4c70-a3cb-e9475778e51d",
+    "name": "Developer Shortage",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Remove Employee"
+  },
+  {
+    "id": "9fbe8dd7-bd23-4c00-af79-9accb56fdd5b",
+    "project_id": "c6495b20-5260-4c1e-8d2e-14eb75c4a36e",
+    "name": "QA Shortage",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Remove Employee"
+  },
+  {
+    "id": "09384119-3c70-4720-8740-f869c272a135",
+    "project_id": "52edc87a-a393-42b8-a5e5-299b836db4a1",
+    "name": "Capacity Expansion",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Add Employee"
+  },
+  {
+    "id": "41ae748a-c4eb-475b-bbfb-5a8d9f6ce92f",
+    "project_id": "f29eb390-6e10-4a56-a3d7-88d8b82ff773",
+    "name": "Cloud Scaling",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Custom Allocation"
+  },
+  {
+    "id": "ac8641df-8ff2-4cc4-8cab-bff4aebc1b47",
+    "project_id": "13f74e73-34a6-48e6-b13f-70ac44d9ca08",
+    "name": "Cost Reduction",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Redistribute Workload"
+  },
+  {
+    "id": "24d3d054-d374-466e-a2d4-48e9ae5a84a9",
+    "project_id": "54c60763-17ea-4c6d-aad9-5386629b815a",
+    "name": "Automation Increase",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Redistribute Workload"
+  },
+  {
+    "id": "0d7605b8-9bb6-4781-9a52-8095f3ef8a10",
+    "project_id": "d40ac021-b7ee-4f94-8f8c-0fd8453cefa5",
+    "name": "Deadline Pressure",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Custom Allocation"
+  },
+  {
+    "id": "5d1969bb-08ad-4e8c-bd3f-177a993a5578",
+    "project_id": "a960e05b-9029-4f15-bae1-95cfff6cb2fa",
+    "name": "High Incident Load",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Custom Allocation"
+  },
+  {
+    "id": "690046b2-22dd-4cf8-a7d6-25d4a4dfba12",
+    "project_id": "88aaf3ef-d659-4846-9e93-8725ac8bdc1d",
+    "name": "Growth Scenario",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Add Employee"
+  },
+  {
+    "id": "ae3a870e-3152-49e6-b8cb-72aec36c3231",
+    "project_id": "fc9391ca-fff9-4cd1-ad1f-264d3be44802",
+    "name": "Stress Test",
+    "description": "Simulation estimate based on dataset values and defined assumptions.",
+    "scenario_type": "Custom Allocation"
+  }
+]

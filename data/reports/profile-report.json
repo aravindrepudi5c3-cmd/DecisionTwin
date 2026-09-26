@@ -1,0 +1,716 @@
+{
+  "source_path": "C:\\Users\\nanda\\OneDrive\\Desktop\\DecisionTwin\\decision-twin\\data\\DecisionTwin_IT_Master_Dataset.csv",
+  "source_missing": false,
+  "source_exists_but_empty": false,
+  "total_rows": 7500,
+  "total_columns": 109,
+  "columns": [
+    "record_id",
+    "organization_id",
+    "organization_name",
+    "location",
+    "organization_size",
+    "business_unit",
+    "project_id",
+    "project_type",
+    "project_phase",
+    "project_priority",
+    "team_id",
+    "employee_id",
+    "employee_role",
+    "skill_level",
+    "timestamp",
+    "team_size",
+    "developers",
+    "testers",
+    "devops_engineers",
+    "data_ai_staff",
+    "managers",
+    "available_staff",
+    "absenteeism_rate",
+    "avg_experience_years",
+    "productivity_index",
+    "planned_tasks",
+    "completed_tasks",
+    "incoming_work_items",
+    "feature_requests",
+    "bugs",
+    "incidents",
+    "service_requests",
+    "technical_debt_items",
+    "backlog_items",
+    "sprint_id",
+    "sprint_days",
+    "sprint_capacity",
+    "sprint_planned",
+    "sprint_completed",
+    "sprint_velocity",
+    "avg_task_hours",
+    "team_work_hours",
+    "code_commits",
+    "pull_requests",
+    "code_reviews",
+    "review_delay_days",
+    "deployment_frequency_per_day",
+    "lead_time_days",
+    "cycle_time_days",
+    "defect_rate",
+    "escaped_defects",
+    "test_coverage",
+    "test_automation_rate",
+    "cloud_provider",
+    "cloud_service",
+    "cpu_utilization",
+    "memory_utilization",
+    "storage_utilization",
+    "infrastructure_availability",
+    "incidents_per_day",
+    "downtime_hours",
+    "salary_cost",
+    "cloud_cost",
+    "tooling_cost",
+    "infrastructure_cost",
+    "overtime_cost",
+    "contractor_cost",
+    "current_project_cost",
+    "days_remaining",
+    "planned_delivery_days",
+    "actual_elapsed_days",
+    "deadline_pressure",
+    "current_utilization",
+    "bottleneck",
+    "risk_type",
+    "resource_risk",
+    "technical_risk",
+    "schedule_risk",
+    "security_risk",
+    "budget_risk",
+    "risk_probability",
+    "risk_impact",
+    "risk_score",
+    "demand_change_pct",
+    "staff_change_pct",
+    "capacity_change_pct",
+    "cloud_change_pct",
+    "cost_change_pct",
+    "automation_change_pct",
+    "timeline_change_pct",
+    "scenario_id",
+    "scenario_name",
+    "simulated_demand",
+    "simulated_staff",
+    "simulated_capacity",
+    "simulated_completed",
+    "simulated_backlog",
+    "simulated_utilization",
+    "simulated_delivery_days",
+    "simulated_cloud_cost",
+    "simulated_project_cost",
+    "current_sla_score",
+    "simulated_sla_score",
+    "current_revenue",
+    "current_profit",
+    "simulated_revenue",
+    "simulated_profit",
+    "simulated_risk_score",
+    "risk_level"
+  ],
+  "unique_counts": {
+    "organization_id": 8,
+    "project_id": 400,
+    "employee_id": 3911,
+    "team_id": 500,
+    "scenario_id": 12
+  },
+  "distinct_values": {
+    "employee_roles": [
+      "Business Analyst",
+      "Cloud Engineer",
+      "Data Engineer",
+      "DevOps Engineer",
+      "ML Engineer",
+      "Product Manager",
+      "Project Manager",
+      "QA Engineer",
+      "Security Engineer",
+      "Senior Developer",
+      "Software Developer",
+      "UI/UX Developer"
+    ],
+    "project_types": [
+      "AI/ML Platform",
+      "API Platform",
+      "Cloud Migration",
+      "Cybersecurity",
+      "Data Platform",
+      "DevOps Modernization",
+      "ERP Implementation",
+      "Internal Enterprise Tool",
+      "Mobile Application",
+      "Web Application"
+    ],
+    "project_phases": [
+      "Deployment",
+      "Development",
+      "Maintenance",
+      "Planning",
+      "Testing",
+      "UAT"
+    ],
+    "project_priorities": [
+      "Critical",
+      "High",
+      "Low",
+      "Medium"
+    ],
+    "risk_types": [
+      "Budget",
+      "Dependency",
+      "Infrastructure",
+      "Quality",
+      "Resource",
+      "Schedule",
+      "Security",
+      "Technical"
+    ],
+    "scenario_names": [
+      "Automation Increase",
+      "Baseline",
+      "Capacity Expansion",
+      "Cloud Scaling",
+      "Cost Reduction",
+      "Deadline Pressure",
+      "Demand Surge",
+      "Developer Shortage",
+      "Growth Scenario",
+      "High Incident Load",
+      "QA Shortage",
+      "Stress Test"
+    ]
+  },
+  "distributions": {
+    "employee_roles": {
+      "Senior Developer": 587,
+      "Data Engineer": 638,
+      "UI/UX Developer": 619,
+      "Software Developer": 630,
+      "DevOps Engineer": 603,
+      "Project Manager": 635,
+      "Cloud Engineer": 626,
+      "Security Engineer": 652,
+      "Business Analyst": 628,
+      "ML Engineer": 625,
+      "Product Manager": 618,
+      "QA Engineer": 639
+    },
+    "project_types": {
+      "AI/ML Platform": 727,
+      "Internal Enterprise Tool": 797,
+      "API Platform": 756,
+      "Mobile Application": 769,
+      "Cybersecurity": 759,
+      "Web Application": 752,
+      "DevOps Modernization": 722,
+      "ERP Implementation": 777,
+      "Data Platform": 736,
+      "Cloud Migration": 705
+    },
+    "project_phases": {
+      "Testing": 1262,
+      "Development": 2647,
+      "Deployment": 779,
+      "Maintenance": 1495,
+      "UAT": 928,
+      "Planning": 389
+    },
+    "project_priorities": {
+      "High": 2680,
+      "Medium": 3303,
+      "Low": 942,
+      "Critical": 575
+    },
+    "risk_levels": {
+      "High": 714,
+      "Medium": 5251,
+      "Low": 1535
+    },
+    "scenario_names": {
+      "Baseline": 625,
+      "Demand Surge": 625,
+      "Developer Shortage": 625,
+      "QA Shortage": 625,
+      "Capacity Expansion": 625,
+      "Cloud Scaling": 625,
+      "Cost Reduction": 625,
+      "Automation Increase": 625,
+      "Deadline Pressure": 625,
+      "High Incident Load": 625,
+      "Growth Scenario": 625,
+      "Stress Test": 625
+    }
+  },
+  "missing_values": {
+    "record_id": 0,
+    "organization_id": 0,
+    "organization_name": 0,
+    "location": 0,
+    "organization_size": 0,
+    "business_unit": 0,
+    "project_id": 0,
+    "project_type": 0,
+    "project_phase": 0,
+    "project_priority": 0,
+    "team_id": 0,
+    "employee_id": 0,
+    "employee_role": 0,
+    "skill_level": 0,
+    "timestamp": 0,
+    "team_size": 0,
+    "developers": 0,
+    "testers": 0,
+    "devops_engineers": 0,
+    "data_ai_staff": 0,
+    "managers": 0,
+    "available_staff": 0,
+    "absenteeism_rate": 0,
+    "avg_experience_years": 0,
+    "productivity_index": 0,
+    "planned_tasks": 0,
+    "completed_tasks": 0,
+    "incoming_work_items": 0,
+    "feature_requests": 0,
+    "bugs": 0,
+    "incidents": 0,
+    "service_requests": 0,
+    "technical_debt_items": 0,
+    "backlog_items": 0,
+    "sprint_id": 0,
+    "sprint_days": 0,
+    "sprint_capacity": 0,
+    "sprint_planned": 0,
+    "sprint_completed": 0,
+    "sprint_velocity": 0,
+    "avg_task_hours": 0,
+    "team_work_hours": 0,
+    "code_commits": 0,
+    "pull_requests": 0,
+    "code_reviews": 0,
+    "review_delay_days": 0,
+    "deployment_frequency_per_day": 0,
+    "lead_time_days": 0,
+    "cycle_time_days": 0,
+    "defect_rate": 0,
+    "escaped_defects": 0,
+    "test_coverage": 0,
+    "test_automation_rate": 0,
+    "cloud_provider": 0,
+    "cloud_service": 0,
+    "cpu_utilization": 0,
+    "memory_utilization": 0,
+    "storage_utilization": 0,
+    "infrastructure_availability": 0,
+    "incidents_per_day": 0,
+    "downtime_hours": 0,
+    "salary_cost": 0,
+    "cloud_cost": 0,
+    "tooling_cost": 0,
+    "infrastructure_cost": 0,
+    "overtime_cost": 0,
+    "contractor_cost": 0,
+    "current_project_cost": 0,
+    "days_remaining": 0,
+    "planned_delivery_days": 0,
+    "actual_elapsed_days": 0,
+    "deadline_pressure": 0,
+    "current_utilization": 0,
+    "bottleneck": 0,
+    "risk_type": 0,
+    "resource_risk": 0,
+    "technical_risk": 0,
+    "schedule_risk": 0,
+    "security_risk": 0,
+    "budget_risk": 0,
+    "risk_probability": 0,
+    "risk_impact": 0,
+    "risk_score": 0,
+    "demand_change_pct": 0,
+    "staff_change_pct": 0,
+    "capacity_change_pct": 0,
+    "cloud_change_pct": 0,
+    "cost_change_pct": 0,
+    "automation_change_pct": 0,
+    "timeline_change_pct": 0,
+    "scenario_id": 0,
+    "scenario_name": 0,
+    "simulated_demand": 0,
+    "simulated_staff": 0,
+    "simulated_capacity": 0,
+    "simulated_completed": 0,
+    "simulated_backlog": 0,
+    "simulated_utilization": 0,
+    "simulated_delivery_days": 0,
+    "simulated_cloud_cost": 0,
+    "simulated_project_cost": 0,
+    "current_sla_score": 0,
+    "simulated_sla_score": 0,
+    "current_revenue": 0,
+    "current_profit": 0,
+    "simulated_revenue": 0,
+    "simulated_profit": 0,
+    "simulated_risk_score": 0,
+    "risk_level": 0
+  },
+  "duplicate_values": {
+    "record_id": 0,
+    "project_id": 0,
+    "employee_id": 0,
+    "team_id": 0,
+    "scenario_id": 0
+  },
+  "numeric_ranges": {
+    "team_size": {
+      "min": 6,
+      "max": 35
+    },
+    "developers": {
+      "min": 2,
+      "max": 19
+    },
+    "testers": {
+      "min": 1,
+      "max": 8
+    },
+    "devops_engineers": {
+      "min": 1,
+      "max": 5
+    },
+    "data_ai_staff": {
+      "min": 0,
+      "max": 5
+    },
+    "managers": {
+      "min": 1,
+      "max": 4
+    },
+    "available_staff": {
+      "min": 4,
+      "max": 34
+    },
+    "absenteeism_rate": {
+      "min": 0.029,
+      "max": 0.333
+    },
+    "avg_experience_years": {
+      "min": 1.5,
+      "max": 10
+    },
+    "productivity_index": {
+      "min": 0.72,
+      "max": 1.25
+    },
+    "planned_tasks": {
+      "min": 70,
+      "max": 419
+    },
+    "completed_tasks": {
+      "min": 51,
+      "max": 451
+    },
+    "incoming_work_items": {
+      "min": 90,
+      "max": 499
+    },
+    "feature_requests": {
+      "min": 22,
+      "max": 247
+    },
+    "bugs": {
+      "min": 7,
+      "max": 138
+    },
+    "incidents": {
+      "min": 1,
+      "max": 49
+    },
+    "service_requests": {
+      "min": 7,
+      "max": 123
+    },
+    "technical_debt_items": {
+      "min": 2,
+      "max": 59
+    },
+    "backlog_items": {
+      "min": 0,
+      "max": 478
+    },
+    "sprint_days": {
+      "min": 10,
+      "max": 15
+    },
+    "sprint_capacity": {
+      "min": 72,
+      "max": 762
+    },
+    "sprint_planned": {
+      "min": 59,
+      "max": 875
+    },
+    "sprint_completed": {
+      "min": 53,
+      "max": 756
+    },
+    "sprint_velocity": {
+      "min": 53,
+      "max": 772
+    },
+    "avg_task_hours": {
+      "min": 2.5,
+      "max": 12
+    },
+    "team_work_hours": {
+      "min": 360.1,
+      "max": 4301.8
+    },
+    "code_commits": {
+      "min": 100,
+      "max": 1799
+    },
+    "pull_requests": {
+      "min": 30,
+      "max": 449
+    },
+    "code_reviews": {
+      "min": 25,
+      "max": 468
+    },
+    "review_delay_days": {
+      "min": 0.4,
+      "max": 5.5
+    },
+    "deployment_frequency_per_day": {
+      "min": 0.2,
+      "max": 6
+    },
+    "lead_time_days": {
+      "min": 1.2,
+      "max": 18
+    },
+    "cycle_time_days": {
+      "min": 1,
+      "max": 12
+    },
+    "defect_rate": {
+      "min": 0.01,
+      "max": 0.16
+    },
+    "escaped_defects": {
+      "min": 0,
+      "max": 27
+    },
+    "test_coverage": {
+      "min": 0.58,
+      "max": 0.98
+    },
+    "test_automation_rate": {
+      "min": 0.35,
+      "max": 0.95
+    },
+    "cpu_utilization": {
+      "min": 25,
+      "max": 92
+    },
+    "memory_utilization": {
+      "min": 30,
+      "max": 94
+    },
+    "storage_utilization": {
+      "min": 20,
+      "max": 88
+    },
+    "infrastructure_availability": {
+      "min": 0.985,
+      "max": 0.9999
+    },
+    "incidents_per_day": {
+      "min": 0.1,
+      "max": 8
+    },
+    "downtime_hours": {
+      "min": 0,
+      "max": 8
+    },
+    "salary_cost": {
+      "min": 10884,
+      "max": 226590
+    },
+    "cloud_cost": {
+      "min": 15030,
+      "max": 179999
+    },
+    "tooling_cost": {
+      "min": 5005,
+      "max": 59984
+    },
+    "infrastructure_cost": {
+      "min": 10015,
+      "max": 119991
+    },
+    "overtime_cost": {
+      "min": 7,
+      "max": 49990
+    },
+    "contractor_cost": {
+      "min": 25,
+      "max": 79998
+    },
+    "current_project_cost": {
+      "min": 84669,
+      "max": 639395
+    },
+    "days_remaining": {
+      "min": 10,
+      "max": 179
+    },
+    "planned_delivery_days": {
+      "min": 30,
+      "max": 239
+    },
+    "actual_elapsed_days": {
+      "min": 13,
+      "max": 273
+    },
+    "deadline_pressure": {
+      "min": 0.433,
+      "max": 1
+    },
+    "current_utilization": {
+      "min": 0.097,
+      "max": 1
+    },
+    "resource_risk": {
+      "min": 0.083,
+      "max": 0.619
+    },
+    "technical_risk": {
+      "min": 0.086,
+      "max": 0.775
+    },
+    "schedule_risk": {
+      "min": 0.283,
+      "max": 1
+    },
+    "security_risk": {
+      "min": 0.03,
+      "max": 0.3
+    },
+    "budget_risk": {
+      "min": 0.014,
+      "max": 0.27
+    },
+    "risk_probability": {
+      "min": 0.239,
+      "max": 0.879
+    },
+    "risk_impact": {
+      "min": 0.45,
+      "max": 0.95
+    },
+    "risk_score": {
+      "min": 0.121,
+      "max": 0.809
+    },
+    "demand_change_pct": {
+      "min": -20,
+      "max": 30
+    },
+    "staff_change_pct": {
+      "min": -20,
+      "max": 20
+    },
+    "capacity_change_pct": {
+      "min": -15,
+      "max": 30
+    },
+    "cloud_change_pct": {
+      "min": -10,
+      "max": 30
+    },
+    "cost_change_pct": {
+      "min": -15,
+      "max": 20
+    },
+    "automation_change_pct": {
+      "min": 0,
+      "max": 20
+    },
+    "timeline_change_pct": {
+      "min": -15,
+      "max": 20
+    },
+    "simulated_demand": {
+      "min": 72,
+      "max": 647
+    },
+    "simulated_staff": {
+      "min": 4,
+      "max": 42
+    },
+    "simulated_capacity": {
+      "min": 63,
+      "max": 1152
+    },
+    "simulated_completed": {
+      "min": 55,
+      "max": 646
+    },
+    "simulated_backlog": {
+      "min": 0,
+      "max": 573
+    },
+    "simulated_utilization": {
+      "min": 0.085,
+      "max": 1
+    },
+    "simulated_delivery_days": {
+      "min": 23.2,
+      "max": 495.8
+    },
+    "simulated_cloud_cost": {
+      "min": 13573,
+      "max": 233974
+    },
+    "simulated_project_cost": {
+      "min": 101602,
+      "max": 695419
+    },
+    "current_sla_score": {
+      "min": 0.658,
+      "max": 0.999
+    },
+    "simulated_sla_score": {
+      "min": 0.601,
+      "max": 0.999
+    },
+    "current_revenue": {
+      "min": 500832,
+      "max": 4999101
+    },
+    "current_profit": {
+      "min": -39371,
+      "max": 4818839
+    },
+    "simulated_revenue": {
+      "min": 376583,
+      "max": 6695387
+    },
+    "simulated_profit": {
+      "min": -108671,
+      "max": 6372110
+    },
+    "simulated_risk_score": {
+      "min": 0.167,
+      "max": 1
+    }
+  }
+}

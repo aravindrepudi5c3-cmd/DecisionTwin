@@ -1,0 +1,8 @@
+import { Bell, CheckCircle2, TriangleAlert } from 'lucide-react'
+import { DataPage } from '../components/common/index.ts'
+import { employeeRecords, projectRecords, validation } from '../services/workspaceData.ts'
+
+export function Notifications() {
+  const warnings = employeeRecords.filter((employee) => employee.status === 'Unavailable').slice(0, 8); const risks = projectRecords.filter((project) => project.riskLevel === 'High').slice(0, 8); const hasNotifications = !validation.valid || warnings.length > 0 || risks.length > 0
+  return <DataPage eyebrow="Workspace" title="Notifications" description="Keep track of important project and decision updates."><section className="data-panel notification-panel">{!hasNotifications ? <div className="empty-state"><Bell size={30} /><h2>All clear</h2><p>There are no validation, capacity, or staffing notifications.</p></div> : <div className="notification-list">{!validation.valid && <article className="notification error"><TriangleAlert size={19} /><span><strong>Data validation issue</strong><small>{validation.errors.join(', ')}</small></span></article>}{warnings.map((employee) => <article className="notification warning-line" key={employee.id}><TriangleAlert size={19} /><span><strong>{employee.name} is at capacity</strong><small>{employee.workload}% workload leaves {employee.capacity}% capacity.</small></span></article>)}{risks.map((project) => <article className="notification" key={project.id}><CheckCircle2 size={19} /><span><strong>Staffing review: {project.name}</strong><small>{project.priority} priority project is marked high risk.</small></span></article>)}</div>}</section></DataPage>
+}

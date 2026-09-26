@@ -1,0 +1,42 @@
+{
+  "_description": "Explicit source-to-DecisionTwin mappings used by the transformation pipeline.",
+  "project_phase_to_status": {
+    "Planning": "Planning",
+    "Development": "Active",
+    "Testing": "Active",
+    "UAT": "Active",
+    "Deployment": "Active",
+    "Maintenance": "On Hold"
+  },
+  "role_to_requirement": {
+    "developers": "Software Developer",
+    "testers": "Software Tester",
+    "devops_engineers": "DevOps Engineer",
+    "data_ai_staff": "Data/AI Staff",
+    "managers": "Manager"
+  },
+  "skill_level_to_proficiency": {
+    "Beginner": "Beginner",
+    "Intermediate": "Intermediate",
+    "Advanced": "Advanced",
+    "Expert": "Expert",
+    "Junior": "Beginner",
+    "Mid-Level": "Intermediate",
+    "Senior": "Advanced",
+    "Lead": "Expert"
+  },
+  "scenario_name_to_type": {
+    "Baseline": "Current Allocation",
+    "Demand Surge": "Custom Allocation",
+    "Developer Shortage": "Remove Employee",
+    "QA Shortage": "Remove Employee",
+    "Capacity Expansion": "Add Employee",
+    "Cloud Scaling": "Custom Allocation",
+    "Cost Reduction": "Redistribute Workload",
+    "Automation Increase": "Redistribute Workload",
+    "Deadline Pressure": "Custom Allocation",
+    "High Incident Load": "Custom Allocation",
+    "Growth Scenario": "Add Employee",
+    "Stress Test": "Custom Allocation"
+  }
+}
