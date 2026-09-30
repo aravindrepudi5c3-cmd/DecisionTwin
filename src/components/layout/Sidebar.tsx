@@ -5,13 +5,15 @@ import {
   BriefcaseBusiness,
   ChevronRight,
   LayoutDashboard,
+  LogOut,
   Network,
   Settings2,
   Sparkles,
   Users,
   Workflow,
 } from 'lucide-react'
-import { NavLink } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 type NavigationItem = {
   label: string
@@ -51,6 +53,14 @@ function NavigationGroup({ items }: { items: NavigationItem[] }) {
 }
 
 export function Sidebar() {
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await logout()
+    navigate('/login')
+  }
+
   return (
     <aside className="sidebar">
       <div className="brand-lockup">
@@ -80,12 +90,33 @@ export function Sidebar() {
           <Settings2 size={18} strokeWidth={1.8} />
           <span>Workspace settings</span>
         </NavLink>
-        <div className="profile-chip">
-          <div className="avatar">AM</div>
-          <div>
-            <strong>Account manager</strong>
-            <span>Workspace member</span>
+        <div className="profile-chip" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <div className="avatar">
+              {user?.fullName ? user.fullName.slice(0, 2).toUpperCase() : 'AM'}
+            </div>
+            <div>
+              <strong>{user?.fullName || 'Account manager'}</strong>
+              <span>{user?.role === 'manager' ? 'Manager Twin' : 'Workspace member'}</span>
+            </div>
           </div>
+          <button
+            type="button"
+            onClick={handleLogout}
+            title="Sign out of DecisionTwin"
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--text-sidebar-muted, #9caaca)',
+              cursor: 'pointer',
+              padding: '4px',
+              borderRadius: '6px',
+              display: 'grid',
+              placeItems: 'center',
+            }}
+          >
+            <LogOut size={16} />
+          </button>
         </div>
       </div>
     </aside>

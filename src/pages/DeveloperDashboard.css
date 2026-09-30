@@ -1,0 +1,310 @@
+/* ==========================================================================
+   Developer Twin — Dedicated Technical Workspace
+   ========================================================================== */
+
+.dt-dev-workspace {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  background: #090e1a;
+  color: #f1f5f9;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.dt-dev-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(13, 21, 38, 0.85);
+  backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.dt-dev-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.dt-dev-brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dt-dev-role-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  color: #d8b4fe;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.dt-dev-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dt-dev-user-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.dt-dev-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #a855f7, #6366f1);
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.dt-dev-username {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.dt-dev-gh-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.dt-dev-main-content {
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem 2rem;
+  width: 100%;
+}
+
+.dt-dev-hero {
+  margin-bottom: 2.5rem;
+}
+
+.dt-dev-hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.dt-dev-hero-desc {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  max-width: 760px;
+  margin: 0;
+}
+
+/* Status banner */
+.dt-dev-telemetry-banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  padding: 1.25rem 1.75rem;
+  background: rgba(16, 24, 44, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  margin-bottom: 2.5rem;
+}
+
+.dt-dev-telemetry-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.dt-dev-telemetry-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.dt-dev-telemetry-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Feature cards grid */
+.dt-dev-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.dt-dev-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(16px);
+  transition: all 0.25s ease;
+}
+
+.dt-dev-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(168, 85, 247, 0.15);
+}
+
+.dt-dev-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(192, 132, 252, 0.25);
+  color: #c084fc;
+  margin-bottom: 1.25rem;
+}
+
+.dt-dev-card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.dt-dev-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #94a3b8;
+  margin: 0 0 1.5rem 0;
+}
+
+.dt-dev-metric-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  margin-top: auto;
+}
+
+/* Simulation Playground */
+.dt-dev-sim-box {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(16px);
+}
+
+.dt-dev-sim-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dt-dev-sim-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.dt-dev-scenario-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.dt-dev-scenario-btn {
+  padding: 0.5rem 0.95rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dt-dev-scenario-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.dt-dev-scenario-btn.active {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: rgba(192, 132, 252, 0.4);
+  color: #ffffff;
+}
+
+.dt-dev-terminal {
+  background: #050811;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1.25rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.84rem;
+  color: #a7f3d0;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .dt-dev-header-inner {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dt-dev-header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dt-dev-main-content {
+    padding: 1.5rem 1rem 3rem 1rem;
+  }
+}

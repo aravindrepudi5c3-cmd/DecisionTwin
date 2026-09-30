@@ -1,0 +1,1079 @@
+/* ==========================================================================
+   DecisionTwin — Premium Auth & Role Selection Experience
+   ========================================================================== */
+
+.dt-auth-root {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #070d18;
+  color: #f1f5f9;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+/* Subtle futuristic background grid overlay */
+.dt-auth-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+  z-index: 0;
+}
+
+/* Canvas layer */
+.dt-network-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* Glow orbs in the background */
+.dt-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.dt-glow-orb-primary {
+  width: 480px;
+  height: 480px;
+  top: 15%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(77, 107, 254, 0.4) 0%, rgba(77, 107, 254, 0) 70%);
+  animation: floatOrb 18s ease-in-out infinite alternate;
+}
+
+.dt-glow-orb-secondary {
+  width: 420px;
+  height: 420px;
+  bottom: 12%;
+  right: 18%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(168, 85, 247, 0) 70%);
+  animation: floatOrb 14s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.08); }
+  100% { transform: translate(-25px, 25px) scale(0.95); }
+}
+
+/* Main Top Navigation / Header */
+.dt-auth-topbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dt-brand-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.dt-brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(77, 107, 254, 0.8) 0%, rgba(139, 92, 246, 0.8) 100%);
+  border: 1px solid rgba(165, 180, 252, 0.4);
+  box-shadow: 0 0 20px rgba(77, 107, 254, 0.35);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dt-brand-container:hover .dt-brand-mark {
+  transform: scale(1.05);
+  box-shadow: 0 0 28px rgba(77, 107, 254, 0.55);
+}
+
+.dt-brand-meta {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.dt-brand-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dt-brand-tagline-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.dt-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dt-connection-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.dt-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.dt-badge-dot-amber {
+  background-color: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+}
+
+/* Back navigation button */
+.dt-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.dt-back-btn:hover {
+  background: rgba(30, 41, 59, 0.7);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-2px);
+}
+
+/* Page body wrapper */
+.dt-auth-content {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1.5rem 3rem 1.5rem;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Glass card container */
+.dt-glass-panel {
+  background: rgba(13, 21, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 20px;
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  overflow: hidden;
+}
+
+/* Animate step changes */
+.dt-step-enter {
+  animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ==========================================================================
+   1. LANDING ENTRY SCREEN
+   ========================================================================== */
+
+.dt-landing-hero {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dt-landing-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: 9999px;
+  background: rgba(77, 107, 254, 0.12);
+  border: 1px solid rgba(99, 132, 255, 0.28);
+  box-shadow: 0 0 20px rgba(77, 107, 254, 0.15);
+  color: #93c5fd;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+
+.dt-landing-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(180deg, #ffffff 30%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dt-landing-tagline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem 0;
+  background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dt-landing-desc {
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.6;
+  color: #94a3b8;
+  max-width: 640px;
+  margin: 0 0 2.5rem 0;
+  font-weight: 400;
+}
+
+.dt-landing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.dt-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2.2rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4d6bfe 0%, #3554e8 100%);
+  border: 1px solid rgba(165, 180, 252, 0.4);
+  box-shadow: 
+    0 10px 30px rgba(77, 107, 254, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dt-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 14px 40px rgba(77, 107, 254, 0.5),
+    0 0 20px rgba(129, 140, 248, 0.4);
+  filter: brightness(1.08);
+}
+
+.dt-btn-primary:active {
+  transform: translateY(0);
+}
+
+.dt-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.8rem;
+  border-radius: 12px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+}
+
+.dt-btn-secondary:hover {
+  background: rgba(51, 65, 85, 0.65);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Feature badges row on landing */
+.dt-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.dt-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  text-align: left;
+}
+
+.dt-feature-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: rgba(77, 107, 254, 0.15);
+  color: #93c5fd;
+  flex-shrink: 0;
+}
+
+.dt-feature-title {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #f1f5f9;
+}
+
+.dt-feature-sub {
+  font-size: 0.76rem;
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   2. ROLE SELECTION SCREEN
+   ========================================================================== */
+
+.dt-role-section {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dt-role-header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.dt-role-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0 0 0.75rem 0;
+}
+
+.dt-role-subtitle {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.dt-cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.dt-role-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 2.25rem;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Top accent gradient border effect */
+.dt-role-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 21px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+/* Manager Card Theme */
+.dt-card-manager {
+  background: radial-gradient(circle at top left, rgba(77, 107, 254, 0.12), rgba(13, 21, 38, 0.8) 55%);
+}
+
+.dt-card-manager:hover {
+  transform: translateY(-8px);
+  border-color: rgba(99, 132, 255, 0.4);
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.6),
+    0 0 35px rgba(77, 107, 254, 0.22);
+}
+
+.dt-card-manager:hover::before {
+  background: linear-gradient(135deg, rgba(99, 132, 255, 0.6) 0%, rgba(139, 92, 246, 0.25) 50%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+/* Developer Card Theme */
+.dt-card-developer {
+  background: radial-gradient(circle at top left, rgba(168, 85, 247, 0.12), rgba(13, 21, 38, 0.8) 55%);
+}
+
+.dt-card-developer:hover {
+  transform: translateY(-8px);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.6),
+    0 0 35px rgba(168, 85, 247, 0.22);
+}
+
+.dt-card-developer:hover::before {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.6) 0%, rgba(56, 189, 248, 0.25) 50%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.dt-card-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.dt-card-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.dt-card-manager .dt-card-badge {
+  background: rgba(77, 107, 254, 0.15);
+  border-color: rgba(99, 132, 255, 0.3);
+  color: #93c5fd;
+}
+
+.dt-card-developer .dt-card-badge {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(192, 132, 252, 0.3);
+  color: #d8b4fe;
+}
+
+.dt-card-icon-box {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dt-card-manager .dt-card-icon-box {
+  background: linear-gradient(135deg, rgba(77, 107, 254, 0.25) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border: 1px solid rgba(99, 132, 255, 0.3);
+  color: #60a5fa;
+}
+
+.dt-card-developer .dt-card-icon-box {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  color: #c084fc;
+}
+
+.dt-role-card:hover .dt-card-icon-box {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.dt-card-manager:hover .dt-card-icon-box {
+  box-shadow: 0 0 24px rgba(77, 107, 254, 0.4);
+}
+
+.dt-card-developer:hover .dt-card-icon-box {
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.4);
+}
+
+.dt-card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 0.75rem 0;
+}
+
+.dt-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0 0 1.75rem 0;
+  min-height: 70px;
+}
+
+.dt-card-features-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+}
+
+.dt-card-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.dt-feature-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: #cbd5e1;
+}
+
+.dt-feature-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.dt-card-manager .dt-feature-check {
+  color: #60a5fa;
+  background: rgba(77, 107, 254, 0.15);
+}
+
+.dt-card-developer .dt-feature-check {
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.15);
+}
+
+.dt-card-cta-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: auto;
+}
+
+.dt-card-manager .dt-card-cta-btn {
+  background: linear-gradient(135deg, rgba(77, 107, 254, 0.9) 0%, rgba(53, 84, 232, 0.9) 100%);
+  border: 1px solid rgba(147, 197, 253, 0.35);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(77, 107, 254, 0.25);
+}
+
+.dt-card-manager:hover .dt-card-cta-btn {
+  box-shadow: 0 12px 30px rgba(77, 107, 254, 0.45);
+  filter: brightness(1.1);
+}
+
+.dt-card-developer .dt-card-cta-btn {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%);
+  border: 1px solid rgba(216, 180, 254, 0.35);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.25);
+}
+
+.dt-card-developer:hover .dt-card-cta-btn {
+  box-shadow: 0 12px 30px rgba(168, 85, 247, 0.45);
+  filter: brightness(1.1);
+}
+
+/* ==========================================================================
+   3 & 4. AUTHENTICATION SCREENS (Manager & Developer)
+   ========================================================================== */
+
+.dt-auth-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 2.75rem 2.5rem;
+  margin: 0 auto;
+}
+
+.dt-auth-card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dt-auth-role-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+
+.dt-tag-manager {
+  background: rgba(77, 107, 254, 0.15);
+  border: 1px solid rgba(99, 132, 255, 0.3);
+  color: #93c5fd;
+}
+
+.dt-tag-developer {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  color: #d8b4fe;
+}
+
+.dt-auth-card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.dt-auth-card-desc {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Tab toggle: Login vs Sign Up */
+.dt-tab-toggle {
+  display: flex;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.dt-tab-btn {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #94a3b8;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.dt-tab-btn.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.dt-tab-btn.active-manager {
+  background: rgba(77, 107, 254, 0.25);
+  color: #ffffff;
+  border: 1px solid rgba(99, 132, 255, 0.3);
+}
+
+.dt-tab-btn.active-developer {
+  background: rgba(168, 85, 247, 0.25);
+  color: #ffffff;
+  border: 1px solid rgba(192, 132, 252, 0.3);
+}
+
+/* Form controls */
+.dt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dt-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  text-align: left;
+}
+
+.dt-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dt-optional-badge {
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.dt-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dt-input-icon {
+  position: absolute;
+  left: 14px;
+  color: #64748b;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.dt-input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  background: rgba(10, 16, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 0.92rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.dt-input-with-action {
+  padding-right: 2.75rem;
+}
+
+.dt-input:focus {
+  border-color: #60a5fa;
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+.dt-input:focus ~ .dt-input-icon,
+.dt-input:focus + .dt-input-icon {
+  color: #60a5fa;
+}
+
+.dt-input::placeholder {
+  color: #475569;
+}
+
+.dt-input-action-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+
+.dt-input-action-btn:hover {
+  color: #cbd5e1;
+}
+
+/* Checkbox and links */
+.dt-form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+
+.dt-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dt-checkbox-label input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.dt-checkbox-label input[type="checkbox"]:checked {
+  background: #4d6bfe;
+  border-color: #4d6bfe;
+}
+
+.dt-checkbox-label input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.dt-link {
+  color: #60a5fa;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  transition: color 0.2s ease;
+}
+
+.dt-link:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+/* Alert / Validation message banners */
+.dt-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.dt-alert-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.dt-alert-success {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+}
+
+/* Submit button with spinner */
+.dt-submit-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.5rem;
+  border-radius: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 0.75rem;
+}
+
+.dt-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+.dt-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Auth card footer switch */
+.dt-auth-footer {
+  margin-top: 1.75rem;
+  text-align: center;
+  font-size: 0.84rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+/* Demo switch helper banner */
+.dt-demo-note {
+  margin-top: 1.5rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  color: #64748b;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .dt-cards-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .dt-role-card {
+    padding: 2rem 1.75rem;
+  }
+
+  .dt-card-desc {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .dt-auth-topbar {
+    padding: 1.25rem 1.25rem;
+  }
+
+  .dt-brand-tagline-sub {
+    display: none;
+  }
+
+  .dt-auth-content {
+    padding: 1rem 1rem 2.5rem 1rem;
+  }
+
+  .dt-auth-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .dt-landing-hero {
+    padding: 1rem 0;
+  }
+
+  .dt-landing-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dt-btn-primary,
+  .dt-btn-secondary {
+    width: 100%;
+  }
+
+  .dt-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}

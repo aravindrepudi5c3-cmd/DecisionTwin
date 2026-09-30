@@ -40,7 +40,7 @@ export function CinematicIntro() {
     if (isTransitioning) return
 
     setIsTransitioning(true)
-    window.setTimeout(() => navigate('/dashboard'), 650)
+    window.setTimeout(() => navigate('/login?step=roles'), 650)
   }
 
   return (
