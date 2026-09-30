@@ -46,10 +46,21 @@ export const DeveloperDashboard: React.FC = () => {
   const refreshWorkspace = useCallback(async () => {
     if (!developerId) return
     try {
-      const [projList, histList] = await Promise.all([
+      let [projList, histList] = await Promise.all([
         developerProjectService.getProjects(developerId),
         analysisService.getAnalysisHistory(developerId),
       ])
+
+      // Auto-seed demo projects if the workspace is fresh/empty,
+      // ensuring hackathon judges immediately see rich enterprise digital twins!
+      if (projList.length === 0) {
+        await demoSeedService.seedAllDemoProjects(developerId)
+        ;[projList, histList] = await Promise.all([
+          developerProjectService.getProjects(developerId),
+          analysisService.getAnalysisHistory(developerId),
+        ])
+      }
+
       setProjects(projList)
       setAnalyses(histList)
     } catch (err) {
@@ -95,13 +106,12 @@ export const DeveloperDashboard: React.FC = () => {
     await refreshWorkspace()
   }
 
-  // Load Demo Project handler (Prompt Rule 35)
+  // Load Demo Showcase handler (seeds 4 enterprise architectures with blast radius simulations)
   const handleLoadDemoProject = async () => {
     setIsLoadingDemo(true)
     try {
-      const demoProj = await demoSeedService.seedDemoProject(developerId)
+      await demoSeedService.seedAllDemoProjects(developerId)
       await refreshWorkspace()
-      setSelectedProject(demoProj)
     } catch (err) {
       console.error('[DeveloperDashboard] Seed demo error:', err)
     } finally {
@@ -147,6 +157,8 @@ export const DeveloperDashboard: React.FC = () => {
             setSelectedProject(null)
             setActiveTab('change-analyzer')
           }}
+          onLoadDemo={handleLoadDemoProject}
+          isLoadingDemo={isLoadingDemo}
         />
 
         <main className="dt-dev-main-body">

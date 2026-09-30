@@ -70,6 +70,12 @@ export const ChangeAnalyzerView: React.FC<ChangeAnalyzerViewProps> = ({
   const [isSaving, setIsSaving] = useState(false)
   const [saveSuccess, setSaveSuccess] = useState(false)
 
+  useEffect(() => {
+    if (!selectedProjectId && projects.length > 0) {
+      setSelectedProjectId(initialProject?.id || projects[0].id)
+    }
+  }, [projects, selectedProjectId, initialProject])
+
   // Load components and dependencies for selected project
   useEffect(() => {
     if (!selectedProjectId) {

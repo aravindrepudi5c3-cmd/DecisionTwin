@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Zap, Database } from 'lucide-react'
+import { Menu, Zap, Database, Sparkles } from 'lucide-react'
 import type { DeveloperProfile } from '../../types/auth'
 import { isSupabaseConfigured } from '../../services/supabase'
 import { GithubIcon } from './GithubIcon'
@@ -8,12 +8,16 @@ interface DeveloperHeaderProps {
   developerUser: DeveloperProfile | null
   onOpenMobileSidebar: () => void
   onQuickAnalyze: () => void
+  onLoadDemo?: () => void
+  isLoadingDemo?: boolean
 }
 
 export const DeveloperHeader: React.FC<DeveloperHeaderProps> = ({
   developerUser,
   onOpenMobileSidebar,
   onQuickAnalyze,
+  onLoadDemo,
+  isLoadingDemo,
 }) => {
   return (
     <header className="dt-dev-topbar">
@@ -50,6 +54,20 @@ export const DeveloperHeader: React.FC<DeveloperHeaderProps> = ({
           <Database size={12} />
           <span>{isSupabaseConfigured ? 'Supabase Connected' : 'Sandbox Ready'}</span>
         </div>
+
+        {/* Demo Showcase Button for Judges */}
+        {onLoadDemo && (
+          <button
+            type="button"
+            onClick={onLoadDemo}
+            disabled={isLoadingDemo}
+            className="dt-dev-btn-secondary py-1.5 px-3 text-xs border-purple-500/30 hover:border-purple-500/60 text-purple-300 flex items-center gap-1.5"
+            title="Load 4 pre-configured enterprise demo architectures for jury demonstration"
+          >
+            <Sparkles size={13} className={isLoadingDemo ? 'animate-spin' : 'text-purple-400'} />
+            <span className="hidden sm:inline">{isLoadingDemo ? 'Seeding...' : 'Demo Showcase'}</span>
+          </button>
+        )}
 
         {/* Quick CTA */}
         <button

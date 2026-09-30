@@ -117,7 +117,7 @@ export const DeveloperOverviewView: React.FC<DeveloperOverviewViewProps> = ({
               className="dt-dev-btn-secondary text-xs py-2 px-4 border-purple-500/30 hover:border-purple-500/60 text-purple-300"
             >
               <Sparkles size={14} />
-              <span>{isLoadingDemo ? 'Seeding Architecture...' : 'Load Demo Project (E-Commerce Backend)'}</span>
+              <span>{isLoadingDemo ? 'Seeding Architectures...' : 'Load Demo Showcase (4 Enterprise Twins)'}</span>
             </button>
           </div>
         </div>
@@ -133,18 +133,30 @@ export const DeveloperOverviewView: React.FC<DeveloperOverviewViewProps> = ({
                 Connected Projects ({projects.length})
               </h2>
             </div>
-            <button
-              type="button"
-              onClick={() => onNavigateTab('projects')}
-              className="text-xs text-sky-400 hover:text-sky-300 font-mono flex items-center gap-1"
-            >
-              <span>View All</span>
-              <ArrowRight size={13} />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={onLoadDemoProject}
+                disabled={isLoadingDemo}
+                className="hidden sm:inline-flex text-xs text-purple-400 hover:text-purple-300 font-mono items-center gap-1 border border-purple-500/30 px-2.5 py-1 rounded bg-purple-500/10 hover:bg-purple-500/20"
+                title="Reload the 4 pre-configured demo architectures"
+              >
+                <Sparkles size={12} className={isLoadingDemo ? 'animate-spin' : ''} />
+                <span>{isLoadingDemo ? 'Seeding...' : 'Reload Demo Showcase'}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => onNavigateTab('projects')}
+                className="text-xs text-sky-400 hover:text-sky-300 font-mono flex items-center gap-1"
+              >
+                <span>View All</span>
+                <ArrowRight size={13} />
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {projects.slice(0, 3).map((proj) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
+            {projects.slice(0, 4).map((proj) => (
               <div
                 key={proj.id}
                 className="dt-dev-card dt-dev-card-interactive flex flex-col justify-between"

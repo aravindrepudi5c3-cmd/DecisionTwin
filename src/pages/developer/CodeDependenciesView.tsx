@@ -26,6 +26,12 @@ export const CodeDependenciesView: React.FC<CodeDependenciesViewProps> = ({ proj
   }
 
   useEffect(() => {
+    if (!selectedProjectId && projects.length > 0) {
+      setSelectedProjectId(projects[0].id)
+    }
+  }, [projects, selectedProjectId])
+
+  useEffect(() => {
     if (selectedProjectId) {
       loadData(selectedProjectId)
     }

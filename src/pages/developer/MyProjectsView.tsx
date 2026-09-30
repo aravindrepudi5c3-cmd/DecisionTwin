@@ -59,17 +59,16 @@ export const MyProjectsView: React.FC<MyProjectsViewProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          {projects.length === 0 && (
-            <button
-              type="button"
-              onClick={onLoadDemoProject}
-              disabled={isLoadingDemo}
-              className="dt-dev-btn-secondary text-xs py-2 px-3 border-purple-500/30 text-purple-300"
-            >
-              <Sparkles size={14} />
-              <span>{isLoadingDemo ? 'Loading Demo...' : 'Load Demo Project'}</span>
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={onLoadDemoProject}
+            disabled={isLoadingDemo}
+            className="dt-dev-btn-secondary text-xs py-2 px-3 border-purple-500/30 text-purple-300 hover:border-purple-500/60 flex items-center gap-1.5"
+            title="Load 4 pre-configured enterprise demo architectures for demonstration"
+          >
+            <Sparkles size={14} className={isLoadingDemo ? 'animate-spin' : 'text-purple-400'} />
+            <span>{isLoadingDemo ? 'Seeding Architectures...' : 'Demo Showcase'}</span>
+          </button>
           <button
             type="button"
             onClick={onAddProject}
@@ -87,12 +86,21 @@ export const MyProjectsView: React.FC<MyProjectsViewProps> = ({
           <FolderGit2 size={40} className="mx-auto text-slate-600 mb-3" />
           <h3 className="text-base font-bold text-white font-mono mb-1">No Projects Found</h3>
           <p className="text-xs text-slate-400 max-w-sm mx-auto mb-5">
-            Add a project with its repository link or load the demo project to start modeling software architecture.
+            Add a project with its repository link or load the demo showcase to inspect multi-tier software architectures.
           </p>
-          <div className="flex justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             <button type="button" onClick={onAddProject} className="dt-dev-btn-primary text-xs py-2 px-4">
               <Plus size={14} />
               <span>+ Add Project</span>
+            </button>
+            <button
+              type="button"
+              onClick={onLoadDemoProject}
+              disabled={isLoadingDemo}
+              className="dt-dev-btn-secondary text-xs py-2 px-4 border-purple-500/30 text-purple-300"
+            >
+              <Sparkles size={14} />
+              <span>{isLoadingDemo ? 'Seeding...' : 'Load Demo Showcase (4 Enterprise Twins)'}</span>
             </button>
           </div>
         </div>

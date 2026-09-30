@@ -42,7 +42,7 @@ export const analysisService = {
       try {
         let query = supabase
           .from('analysis_history')
-          .select('*, developer_projects(name), impact_reports(*)')
+          .select('*, developer_projects(name), impact_reports(*), test_recommendations(*)')
           .eq('developer_id', developerId)
           .order('created_at', { ascending: false })
 
@@ -63,6 +63,7 @@ export const analysisService = {
             created_at: item.created_at,
             project_name: item.developer_projects?.name,
             impact_report: item.impact_reports?.[0] || item.impact_reports || undefined,
+            test_recommendations: item.test_recommendations || [],
           }))
         }
       } catch (err) {
