@@ -1,0 +1,443 @@
+/* ==========================================================================
+   Manager Twin — Cinematic Digital Twin Background Video & Dashboard Theme
+   "Simulate Before You Decide"
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Layer 1 & 2: Background Video & Cinematic Dark Overlay
+   -------------------------------------------------------------------------- */
+
+.manager-bg-video-root {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: #070c18;
+}
+
+/* Fallback & Ambient Digital Twin Hologram Grid */
+.manager-bg-fallback-mesh {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 15%, #0f1c38 0%, #070c18 80%);
+  overflow: hidden;
+}
+
+.manager-bg-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: orbPulse 12s ease-in-out infinite alternate;
+}
+
+.manager-bg-ambient-orb--1 {
+  width: 550px;
+  height: 550px;
+  top: -100px;
+  left: 20%;
+  background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+}
+
+.manager-bg-ambient-orb--2 {
+  width: 450px;
+  height: 450px;
+  bottom: 5%;
+  right: 15%;
+  background: radial-gradient(circle, #6366f1 0%, transparent 70%);
+  animation-delay: -4s;
+}
+
+.manager-bg-ambient-orb--3 {
+  width: 380px;
+  height: 380px;
+  top: 40%;
+  left: 60%;
+  background: radial-gradient(circle, #0ea5e9 0%, transparent 70%);
+  animation-delay: -8s;
+}
+
+@keyframes orbPulse {
+  0% {
+    transform: scale(0.9) translateY(0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: scale(1.1) translateY(20px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.95) translateY(-15px);
+    opacity: 0.28;
+  }
+}
+
+.manager-bg-digital-twin-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(1.5px 1.5px at 30px 30px, rgba(56, 189, 248, 0.16) 1px, transparent 0),
+    radial-gradient(1px 1px at 90px 90px, rgba(99, 102, 241, 0.14) 1px, transparent 0);
+  background-size: 120px 120px;
+  opacity: 0.75;
+}
+
+/* Layer 1: Background Video Element */
+.manager-bg-video-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Layer 2: Dark Translucent Gradient Overlay */
+.manager-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 95% 85% at 50% 10%, rgba(13, 21, 39, 0.72) 0%, rgba(7, 11, 22, 0.94) 100%),
+    linear-gradient(180deg, rgba(8, 14, 28, 0.5) 0%, rgba(7, 11, 22, 0.9) 100%);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Layer 3: Manager Dashboard UI (Glassmorphic Dark Cyber Polish)
+   Preserves 100% of all existing cards, metrics, charts, buttons, and layout
+   -------------------------------------------------------------------------- */
+
+/* Shell adaptation when Manager Dashboard is active */
+.app-shell:has(.manager-dashboard-theme) {
+  background: #080d1a !important;
+}
+
+.app-shell:has(.manager-dashboard-theme) .topbar {
+  background: rgba(13, 22, 42, 0.75) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #f8fafc !important;
+}
+
+.app-shell:has(.manager-dashboard-theme) .topbar-search {
+  background: rgba(10, 17, 34, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #f8fafc !important;
+}
+
+.app-shell:has(.manager-dashboard-theme) .topbar-search input {
+  color: #ffffff !important;
+}
+
+.app-shell:has(.manager-dashboard-theme) .topbar-context strong {
+  color: #ffffff !important;
+}
+
+.app-shell:has(.manager-dashboard-theme) .topbar-context small {
+  color: #94a3b8 !important;
+}
+
+.app-shell:has(.manager-dashboard-theme) .topbar-button {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #cbd5e1 !important;
+}
+
+.app-shell:has(.manager-dashboard-theme) .topbar-button:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+.manager-dashboard-theme {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+}
+
+.manager-dashboard-theme .page-content {
+  background: transparent !important;
+  color: #f1f5f9;
+}
+
+.manager-dashboard-theme .page-heading h1 {
+  color: #ffffff !important;
+  text-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+}
+
+.manager-dashboard-theme .page-heading p {
+  color: #94a3b8 !important;
+}
+
+.manager-dashboard-theme .eyebrow {
+  color: #38bdf8 !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.manager-dashboard-theme .workspace-pill {
+  background: rgba(16, 27, 51, 0.8) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  color: #7dd3fc !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+/* Metric Cards */
+.manager-dashboard-theme .metric-card {
+  background: rgba(13, 22, 42, 0.68) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.manager-dashboard-theme .metric-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.35) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5) !important;
+}
+
+.manager-dashboard-theme .metric-card__topline {
+  color: #94a3b8 !important;
+}
+
+.manager-dashboard-theme .metric-card strong {
+  color: #ffffff !important;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.manager-dashboard-theme .metric-card small {
+  color: #64748b !important;
+}
+
+/* Panels */
+.manager-dashboard-theme .overview-panel {
+  background: rgba(13, 22, 42, 0.68) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35) !important;
+}
+
+.manager-dashboard-theme .panel-heading h2 {
+  color: #ffffff !important;
+}
+
+.manager-dashboard-theme .trend-pill {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  color: #34d399 !important;
+}
+
+/* Health Rows */
+.manager-dashboard-theme .health-row__header span {
+  color: #94a3b8 !important;
+}
+
+.manager-dashboard-theme .health-row__header strong {
+  color: #f8fafc !important;
+}
+
+.manager-dashboard-theme .health-row .bar {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.manager-dashboard-theme .health-row .bar i {
+  background: linear-gradient(90deg, #38bdf8, #818cf8) !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* Stack Cards & Lists */
+.manager-dashboard-theme .stack-card {
+  background: rgba(10, 17, 34, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #f1f5f9 !important;
+}
+
+.manager-dashboard-theme .stack-card strong {
+  color: #ffffff !important;
+}
+
+.manager-dashboard-theme .stack-card p {
+  color: #94a3b8 !important;
+}
+
+.manager-dashboard-theme .stack-card small {
+  color: #64748b !important;
+}
+
+/* Options Grid */
+.manager-dashboard-theme .option-card {
+  background: rgba(10, 17, 34, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.manager-dashboard-theme .option-card h3 {
+  color: #ffffff !important;
+}
+
+.manager-dashboard-theme .option-card p {
+  color: #94a3b8 !important;
+}
+
+.manager-dashboard-theme .option-card ul li {
+  color: #cbd5e1 !important;
+}
+
+.manager-dashboard-theme .option-card__eyebrow {
+  color: #38bdf8 !important;
+}
+
+/* Simulation Panel */
+.manager-dashboard-theme .simulation-panel {
+  background: rgba(10, 17, 34, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.manager-dashboard-theme .simulation-panel label span {
+  color: #94a3b8 !important;
+}
+
+.manager-dashboard-theme .simulation-panel label strong {
+  color: #38bdf8 !important;
+}
+
+.manager-dashboard-theme .simulation-summary {
+  background: rgba(7, 12, 24, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.manager-dashboard-theme .simulation-summary strong {
+  color: #ffffff !important;
+}
+
+.manager-dashboard-theme .simulation-summary small {
+  color: #64748b !important;
+}
+
+/* AI Insight */
+.manager-dashboard-theme .ai-insight {
+  color: #cbd5e1 !important;
+}
+
+.manager-dashboard-theme .insight-callout {
+  background: rgba(16, 27, 51, 0.85) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+}
+
+.manager-dashboard-theme .insight-callout span {
+  color: #38bdf8 !important;
+}
+
+.manager-dashboard-theme .insight-callout strong {
+  color: #f8fafc !important;
+}
+
+.manager-dashboard-theme .insight-fact {
+  background: rgba(10, 17, 34, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.manager-dashboard-theme .insight-fact strong {
+  color: #f8fafc !important;
+}
+
+/* Mini Stats & Project Health */
+.manager-dashboard-theme .mini-stat {
+  background: rgba(10, 17, 34, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.manager-dashboard-theme .mini-stat small {
+  color: #64748b !important;
+}
+
+.manager-dashboard-theme .mini-stat strong {
+  color: #ffffff !important;
+}
+
+.manager-dashboard-theme .project-health-item {
+  background: rgba(10, 17, 34, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.manager-dashboard-theme .project-health-item strong {
+  color: #ffffff !important;
+}
+
+.manager-dashboard-theme .project-health-item small {
+  color: #64748b !important;
+}
+
+.manager-dashboard-theme .project-health-metrics span {
+  color: #94a3b8 !important;
+}
+
+.manager-dashboard-theme .timeline-list li {
+  color: #94a3b8 !important;
+}
+
+.manager-dashboard-theme .signal-token {
+  background: rgba(16, 27, 51, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #cbd5e1 !important;
+}
+
+.manager-dashboard-theme .signal-token:hover {
+  border-color: rgba(56, 189, 248, 0.4) !important;
+  color: #ffffff !important;
+}
+
+.manager-dashboard-theme .action-button {
+  background: rgba(16, 27, 51, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.manager-dashboard-theme .action-button:hover {
+  border-color: rgba(56, 189, 248, 0.4) !important;
+  background: rgba(30, 48, 88, 0.85) !important;
+}
+
+.manager-dashboard-theme .ghost-button {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+.manager-dashboard-theme .ghost-button:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility & Mobile Responsive Optimization
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .manager-bg-video-element {
+    display: none !important;
+  }
+  .manager-bg-ambient-orb {
+    animation: none !important;
+    opacity: 0.25 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .manager-bg-video-element {
+    opacity: 0.18 !important;
+  }
+}
