@@ -1,6 +1,8 @@
 import { Search } from 'lucide-react'
+import { useAuth } from '../../hooks/useAuth'
 
 export function Header() {
+  const { managerUser } = useAuth()
   return (
     <header className="topbar">
       <div className="mobile-brand">DecisionTwin</div>
@@ -12,7 +14,7 @@ export function Header() {
       <div className="topbar-actions">
         <div className="topbar-context">
           <span>Workspace</span>
-          <strong>Northstar Operations</strong>
+          <strong>{managerUser?.organizationName || 'Northstar Operations'}</strong>
         </div>
       </div>
     </header>

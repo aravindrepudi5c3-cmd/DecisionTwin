@@ -6,14 +6,18 @@ import {
   Check,
   GitBranch,
   Activity,
+  CheckCircle2,
 } from 'lucide-react'
 import type { UserRole } from '../../types/auth'
+import { useAuth } from '../../hooks/useAuth'
 
 interface RoleSelectionStepProps {
   onSelectRole: (role: UserRole) => void
 }
 
 export const RoleSelectionStep: React.FC<RoleSelectionStepProps> = ({ onSelectRole }) => {
+  const { managerUser, developerUser } = useAuth()
+
   return (
     <div className="dt-role-section dt-step-enter">
       <div className="dt-role-header">
@@ -55,6 +59,13 @@ export const RoleSelectionStep: React.FC<RoleSelectionStepProps> = ({ onSelectRo
             Simulate workforce, demand, capacity, deadlines and organizational decisions before implementing them.
           </p>
 
+          {managerUser && (
+            <div className="mb-4 p-2.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-xs text-blue-300 flex items-center gap-2">
+              <CheckCircle2 size={14} className="text-blue-400 shrink-0" />
+              <span>Active session: <strong>{managerUser.fullName}</strong> ({managerUser.organizationName})</span>
+            </div>
+          )}
+
           <div className="dt-card-features-heading">Core Capabilities</div>
           <ul className="dt-card-features-list">
             <li className="dt-feature-row">
@@ -91,7 +102,7 @@ export const RoleSelectionStep: React.FC<RoleSelectionStepProps> = ({ onSelectRo
               onSelectRole('manager')
             }}
           >
-            <span>Continue as Manager</span>
+            <span>{managerUser ? 'Enter Manager Twin' : 'Continue as Manager'}</span>
             <ArrowRight size={17} />
           </button>
         </div>
@@ -126,6 +137,13 @@ export const RoleSelectionStep: React.FC<RoleSelectionStepProps> = ({ onSelectRo
           <p className="dt-card-desc">
             Analyze software changes, dependencies, affected components and technical risks before modifying your system.
           </p>
+
+          {developerUser && (
+            <div className="mb-4 p-2.5 rounded-lg bg-purple-500/10 border border-purple-500/20 text-xs text-purple-300 flex items-center gap-2">
+              <CheckCircle2 size={14} className="text-purple-400 shrink-0" />
+              <span>Active session: <strong>{developerUser.fullName}</strong></span>
+            </div>
+          )}
 
           <div className="dt-card-features-heading">Core Capabilities</div>
           <ul className="dt-card-features-list">
@@ -163,7 +181,7 @@ export const RoleSelectionStep: React.FC<RoleSelectionStepProps> = ({ onSelectRo
               onSelectRole('developer')
             }}
           >
-            <span>Continue as Developer</span>
+            <span>{developerUser ? 'Enter Developer Twin' : 'Continue as Developer'}</span>
             <ArrowRight size={17} />
           </button>
         </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { ArrowLeft, LogOut, ArrowRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { useAuth } from '../hooks/useAuth'
 import type { UserRole } from '../types/auth'
 import { NetworkCanvas } from '../components/auth/NetworkCanvas'
@@ -15,7 +15,7 @@ type AuthView = 'landing' | 'role-select' | 'manager-auth' | 'developer-auth'
 export function Login() {
   const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
-  const { user, isAuthenticated, isSupabaseConnected, logout } = useAuth()
+  const { managerUser, developerUser, isSupabaseConnected } = useAuth()
 
   // Derive active view and mode directly from URL searchParams
   const roleParam = searchParams.get('role')
@@ -38,6 +38,14 @@ export function Login() {
   }
 
   const handleSelectRole = (role: UserRole) => {
+    if (role === 'manager' && managerUser) {
+      navigate('/dashboard')
+      return
+    }
+    if (role === 'developer' && developerUser) {
+      navigate('/developer-dashboard')
+      return
+    }
     setSearchParams({ role })
   }
 
@@ -104,33 +112,6 @@ export function Login() {
 
       {/* Main Multi-Step Content Area */}
       <main className="dt-auth-content">
-        {/* If already authenticated, show quick shortcut banner */}
-        {isAuthenticated && user && currentView === 'landing' && (
-          <div className="w-full max-w-xl mb-6 mx-auto dt-glass-panel p-5 text-center dt-step-enter" style={{ zIndex: 10 }}>
-            <div className="text-sm text-slate-300 mb-2">
-              Signed in as <strong className="text-white">{user.fullName}</strong> ({user.role.toUpperCase()} TWIN)
-            </div>
-            <div className="flex items-center justify-center gap-3">
-              <button
-                type="button"
-                className="dt-btn-primary py-2 px-4 text-sm"
-                onClick={() => navigate(user.role === 'manager' ? '/dashboard' : '/developer-dashboard')}
-              >
-                <span>Continue to {user.role === 'manager' ? 'Manager' : 'Developer'} Dashboard</span>
-                <ArrowRight size={15} />
-              </button>
-              <button
-                type="button"
-                className="dt-btn-secondary py-2 px-4 text-sm"
-                onClick={() => logout()}
-              >
-                <LogOut size={14} />
-                <span>Switch Account</span>
-              </button>
-            </div>
-          </div>
-        )}
-
         {currentView === 'landing' && (
           <LandingStep
             onGetStarted={handleGoToRoleSelect}

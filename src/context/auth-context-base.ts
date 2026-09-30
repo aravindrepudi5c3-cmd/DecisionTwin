@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import type { UserProfile, UserRole } from '../types/auth'
+import type { ManagerProfile, DeveloperProfile, UserProfile, UserRole } from '../types/auth'
 
 export interface LoginParams {
   email: string
@@ -20,14 +20,18 @@ export interface SignupParams {
 
 export interface AuthContextType {
   user: UserProfile | null
+  managerUser: ManagerProfile | null
+  developerUser: DeveloperProfile | null
   role: UserRole | null
+  activeRole: UserRole | null
   isAuthenticated: boolean
+  isManagerAuthenticated: boolean
+  isDeveloperAuthenticated: boolean
   isLoading: boolean
   isSupabaseConnected: boolean
   login: (params: LoginParams) => Promise<{ success: boolean; error?: string }>
   signup: (params: SignupParams) => Promise<{ success: boolean; error?: string }>
-  logout: () => Promise<void>
-  switchRole: (role: UserRole) => void
+  logout: (role?: UserRole) => Promise<void>
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined)

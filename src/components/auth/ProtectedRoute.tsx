@@ -12,7 +12,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   children,
   requiredRole,
 }) => {
-  const { user, isAuthenticated, isLoading } = useAuth()
+  const { managerUser, developerUser, isLoading } = useAuth()
   const location = useLocation()
 
   if (isLoading) {
@@ -26,18 +26,25 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     )
   }
 
-  // If not logged in, redirect to login page with return state
-  if (!isAuthenticated || !user) {
-    return <Navigate to="/login" state={{ from: location }} replace />
+  // Manager Routes Protection
+  if (requiredRole === 'manager') {
+    if (!managerUser) {
+      return <Navigate to="/login?role=manager" state={{ from: location }} replace />
+    }
+    return <>{children}</>
   }
 
-  // If a specific role is required and user does not have it, route to their role dashboard
-  if (requiredRole && user.role !== requiredRole) {
-    if (user.role === 'developer') {
-      return <Navigate to="/developer-dashboard" replace />
-    } else {
-      return <Navigate to="/dashboard" replace />
+  // Developer Routes Protection
+  if (requiredRole === 'developer') {
+    if (!developerUser) {
+      return <Navigate to="/login?role=developer" state={{ from: location }} replace />
     }
+    return <>{children}</>
+  }
+
+  // Generic fallback
+  if (!managerUser && !developerUser) {
+    return <Navigate to="/login" state={{ from: location }} replace />
   }
 
   return <>{children}</>

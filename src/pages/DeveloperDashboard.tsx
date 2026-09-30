@@ -4,7 +4,6 @@ import {
   Code2,
   GitBranch,
   LogOut,
-  ArrowRightLeft,
   CheckCircle2,
   Play,
   Layers,
@@ -33,7 +32,6 @@ function GithubIcon({ size = 12, className = '' }: { size?: number; className?: 
     </svg>
   )
 }
-
 
 interface SimulationScenario {
   id: string
@@ -104,19 +102,14 @@ const scenarios: SimulationScenario[] = [
 ]
 
 export const DeveloperDashboard: React.FC = () => {
-  const { user, logout, switchRole } = useAuth()
+  const { developerUser, logout } = useAuth()
   const navigate = useNavigate()
   const [activeScenario, setActiveScenario] = useState<SimulationScenario>(scenarios[0])
   const [isSimulating, setIsSimulating] = useState(false)
 
-  const handleSwitchToManager = () => {
-    switchRole('manager')
-    navigate('/dashboard')
-  }
-
   const handleLogout = async () => {
-    await logout()
-    navigate('/login')
+    await logout('developer')
+    navigate('/login?role=developer')
   }
 
   const runSimulation = (scenario: SimulationScenario) => {
@@ -154,34 +147,23 @@ export const DeveloperDashboard: React.FC = () => {
             {/* User chip */}
             <div className="dt-dev-user-chip">
               <div className="dt-dev-avatar">
-                {user?.fullName?.slice(0, 2).toUpperCase() || 'DV'}
+                {developerUser?.fullName ? developerUser.fullName.slice(0, 2).toUpperCase() : 'DV'}
               </div>
               <div>
-                <div className="dt-dev-username">{user?.fullName || 'Developer'}</div>
+                <div className="dt-dev-username">{developerUser?.fullName || 'Developer'}</div>
                 <div className="dt-dev-gh-tag">
                   <GithubIcon size={12} />
-                  <span>{user?.githubUsername || 'connected'}</span>
+                  <span>{developerUser?.githubUsername || 'connected'}</span>
                 </div>
               </div>
             </div>
-
-            {/* Switch to Manager */}
-            <button
-              type="button"
-              className="dt-back-btn"
-              onClick={handleSwitchToManager}
-              title="Switch to Manager Twin Dashboard"
-            >
-              <ArrowRightLeft size={15} />
-              <span>Switch to Manager Twin</span>
-            </button>
 
             {/* Logout */}
             <button
               type="button"
               className="dt-back-btn text-rose-300 hover:text-rose-200"
               onClick={handleLogout}
-              title="Sign Out"
+              title="Sign Out of Developer Twin"
             >
               <LogOut size={15} />
               <span>Logout</span>

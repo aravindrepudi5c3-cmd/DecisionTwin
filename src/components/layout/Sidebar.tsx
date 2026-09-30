@@ -53,12 +53,12 @@ function NavigationGroup({ items }: { items: NavigationItem[] }) {
 }
 
 export function Sidebar() {
-  const { user, logout } = useAuth()
+  const { managerUser, logout } = useAuth()
   const navigate = useNavigate()
 
   const handleLogout = async () => {
-    await logout()
-    navigate('/login')
+    await logout('manager')
+    navigate('/login?role=manager')
   }
 
   return (
@@ -93,11 +93,11 @@ export function Sidebar() {
         <div className="profile-chip" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <div className="avatar">
-              {user?.fullName ? user.fullName.slice(0, 2).toUpperCase() : 'AM'}
+              {managerUser?.fullName ? managerUser.fullName.slice(0, 2).toUpperCase() : 'AM'}
             </div>
             <div>
-              <strong>{user?.fullName || 'Account manager'}</strong>
-              <span>{user?.role === 'manager' ? 'Manager Twin' : 'Workspace member'}</span>
+              <strong>{managerUser?.fullName || 'Account manager'}</strong>
+              <span>{managerUser?.organizationName || 'Manager Twin'}</span>
             </div>
           </div>
           <button
