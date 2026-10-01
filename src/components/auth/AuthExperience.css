@@ -1023,6 +1023,61 @@
   text-align: center;
 }
 
+.dt-recovery-panel {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.dt-recovery-panel .dt-auth-card-header {
+  margin-bottom: 0.25rem;
+}
+
+.dt-recovery-submit {
+  border: 1px solid rgba(147, 197, 253, 0.4);
+  color: #ffffff;
+  background: linear-gradient(135deg, #4d6bfe 0%, #3554e8 100%);
+  box-shadow: 0 8px 24px rgba(77, 107, 254, 0.25);
+}
+
+.dt-recovery-submit:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.dt-recovery-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 10px;
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.12);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.dt-recovery-result p {
+  margin: 0.35rem 0 0;
+  color: #a7f3d0;
+}
+
+.dt-recovery-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 42px;
+  width: 100%;
+  margin-top: 0.25rem;
+  border-radius: 8px;
+}
+
+.dt-recovery-back:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 3px;
+}
+
 /* ==========================================================================
    Responsive Adaptations
    ========================================================================== */

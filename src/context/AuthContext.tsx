@@ -414,6 +414,46 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }
 
+  const requestPasswordReset = async (email: string): Promise<boolean> => {
+    if (!supabase || !isSupabaseConfigured) return false
+
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email.trim().toLowerCase(), {
+        redirectTo: `${window.location.origin}/reset-password`,
+      })
+
+      return !error
+    } catch {
+      return false
+    }
+  }
+
+  const updatePassword = async (password: string) => {
+    if (!supabase || !isSupabaseConfigured) {
+      return { success: false, reason: 'unavailable' as const }
+    }
+
+    try {
+      const { data, error: sessionError } = await supabase.auth.getSession()
+      if (sessionError || !data.session) {
+        return { success: false, reason: 'invalid-link' as const }
+      }
+
+      const { error } = await supabase.auth.updateUser({ password })
+      if (!error) return { success: true as const }
+      if (error.status === 401 || error.status === 403) {
+        return { success: false, reason: 'invalid-link' as const }
+      }
+      if (error.status === 422) {
+        return { success: false, reason: 'weak-password' as const }
+      }
+
+      return { success: false, reason: 'failed' as const }
+    } catch {
+      return { success: false, reason: 'failed' as const }
+    }
+  }
+
   const logout = async (role?: UserRole) => {
     const targetRole = role || activeRole
 
@@ -462,6 +502,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isSupabaseConnected: isSupabaseConfigured,
         login,
         signup,
+        requestPasswordReset,
+        updatePassword,
         logout,
       }}
     >

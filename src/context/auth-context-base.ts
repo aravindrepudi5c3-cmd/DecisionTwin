@@ -18,6 +18,10 @@ export interface SignupParams {
   repositoryUrl?: string
 }
 
+export type PasswordUpdateResult =
+  | { success: true }
+  | { success: false; reason: 'unavailable' | 'invalid-link' | 'weak-password' | 'failed' }
+
 export interface AuthContextType {
   user: UserProfile | null
   managerUser: ManagerProfile | null
@@ -31,6 +35,8 @@ export interface AuthContextType {
   isSupabaseConnected: boolean
   login: (params: LoginParams) => Promise<{ success: boolean; error?: string }>
   signup: (params: SignupParams) => Promise<{ success: boolean; error?: string }>
+  requestPasswordReset: (email: string) => Promise<boolean>
+  updatePassword: (password: string) => Promise<PasswordUpdateResult>
   logout: (role?: UserRole) => Promise<void>
 }
 

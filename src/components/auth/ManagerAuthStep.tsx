@@ -12,6 +12,7 @@ import {
   Users,
 } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'
+import { PasswordRecoveryForm } from './PasswordRecoveryForm.tsx'
 
 interface ManagerAuthStepProps {
   initialMode?: 'login' | 'signup'
@@ -38,7 +39,7 @@ export const ManagerAuthStep: React.FC<ManagerAuthStepProps> = ({
   // Status states
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
-  const [forgotPasswordSent, setForgotPasswordSent] = useState(false)
+  const [isRecoveryOpen, setIsRecoveryOpen] = useState(false)
 
   const validateEmail = (val: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
@@ -117,15 +118,9 @@ export const ManagerAuthStep: React.FC<ManagerAuthStepProps> = ({
   }
 
   const handleForgotPassword = () => {
-    if (!email || !validateEmail(email)) {
-      setErrorMessage('Please enter your email address above to receive password reset instructions.')
-      return
-    }
-    setForgotPasswordSent(true)
+    setIsRecoveryOpen(true)
     setErrorMessage(null)
-    setTimeout(() => {
-      setForgotPasswordSent(false)
-    }, 6000)
+    setSuccessMessage(null)
   }
 
   return (
@@ -150,6 +145,7 @@ export const ManagerAuthStep: React.FC<ManagerAuthStepProps> = ({
           className={`dt-tab-btn ${mode === 'login' ? 'active active-manager' : ''}`}
           onClick={() => {
             setMode('login')
+            setIsRecoveryOpen(false)
             setErrorMessage(null)
           }}
           role="tab"
@@ -162,6 +158,7 @@ export const ManagerAuthStep: React.FC<ManagerAuthStepProps> = ({
           className={`dt-tab-btn ${mode === 'signup' ? 'active active-manager' : ''}`}
           onClick={() => {
             setMode('signup')
+            setIsRecoveryOpen(false)
             setErrorMessage(null)
           }}
           role="tab"
@@ -171,6 +168,13 @@ export const ManagerAuthStep: React.FC<ManagerAuthStepProps> = ({
         </button>
       </div>
 
+      {isRecoveryOpen ? (
+        <PasswordRecoveryForm
+          initialEmail={email}
+          onBack={() => setIsRecoveryOpen(false)}
+        />
+      ) : (
+        <>
       {/* Alert Messages */}
       {errorMessage && (
         <div className="dt-alert dt-alert-error mb-4">
@@ -183,13 +187,6 @@ export const ManagerAuthStep: React.FC<ManagerAuthStepProps> = ({
         <div className="dt-alert dt-alert-success mb-4">
           <CheckCircle2 size={17} className="shrink-0 mt-0.5" />
           <span>{successMessage}</span>
-        </div>
-      )}
-
-      {forgotPasswordSent && (
-        <div className="dt-alert dt-alert-success mb-4">
-          <CheckCircle2 size={17} className="shrink-0 mt-0.5" />
-          <span>Password recovery link sent to <strong>{email}</strong>. Check your inbox.</span>
         </div>
       )}
 
@@ -328,7 +325,7 @@ export const ManagerAuthStep: React.FC<ManagerAuthStepProps> = ({
               className="dt-link"
               onClick={handleForgotPassword}
             >
-              Forgot password?
+              Forgot Password?
             </button>
           </div>
         )}
@@ -391,6 +388,8 @@ export const ManagerAuthStep: React.FC<ManagerAuthStepProps> = ({
       <div className="dt-demo-note">
         💡 DecisionTwin Engine: Connected with Supabase Auth & Organization Profiles
       </div>
+        </>
+      )}
     </div>
   )
 }

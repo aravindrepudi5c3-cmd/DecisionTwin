@@ -12,6 +12,7 @@ import {
   Code2,
 } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'
+import { PasswordRecoveryForm } from './PasswordRecoveryForm.tsx'
 
 function GithubIcon({ size = 17, className = '' }: { size?: number; className?: string }) {
   return (
@@ -59,7 +60,7 @@ export const DeveloperAuthStep: React.FC<DeveloperAuthStepProps> = ({
   // Status states
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
-  const [forgotPasswordSent, setForgotPasswordSent] = useState(false)
+  const [isRecoveryOpen, setIsRecoveryOpen] = useState(false)
 
   const validateEmail = (val: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
@@ -135,15 +136,9 @@ export const DeveloperAuthStep: React.FC<DeveloperAuthStepProps> = ({
   }
 
   const handleForgotPassword = () => {
-    if (!email || !validateEmail(email)) {
-      setErrorMessage('Please enter your email address above to receive reset instructions.')
-      return
-    }
-    setForgotPasswordSent(true)
+    setIsRecoveryOpen(true)
     setErrorMessage(null)
-    setTimeout(() => {
-      setForgotPasswordSent(false)
-    }, 6000)
+    setSuccessMessage(null)
   }
 
   return (
@@ -168,6 +163,7 @@ export const DeveloperAuthStep: React.FC<DeveloperAuthStepProps> = ({
           className={`dt-tab-btn ${mode === 'login' ? 'active active-developer' : ''}`}
           onClick={() => {
             setMode('login')
+            setIsRecoveryOpen(false)
             setErrorMessage(null)
           }}
           role="tab"
@@ -180,6 +176,7 @@ export const DeveloperAuthStep: React.FC<DeveloperAuthStepProps> = ({
           className={`dt-tab-btn ${mode === 'signup' ? 'active active-developer' : ''}`}
           onClick={() => {
             setMode('signup')
+            setIsRecoveryOpen(false)
             setErrorMessage(null)
           }}
           role="tab"
@@ -189,6 +186,13 @@ export const DeveloperAuthStep: React.FC<DeveloperAuthStepProps> = ({
         </button>
       </div>
 
+      {isRecoveryOpen ? (
+        <PasswordRecoveryForm
+          initialEmail={email}
+          onBack={() => setIsRecoveryOpen(false)}
+        />
+      ) : (
+        <>
       {/* Alert Messages */}
       {errorMessage && (
         <div className="dt-alert dt-alert-error mb-4">
@@ -201,13 +205,6 @@ export const DeveloperAuthStep: React.FC<DeveloperAuthStepProps> = ({
         <div className="dt-alert dt-alert-success mb-4">
           <CheckCircle2 size={17} className="shrink-0 mt-0.5" />
           <span>{successMessage}</span>
-        </div>
-      )}
-
-      {forgotPasswordSent && (
-        <div className="dt-alert dt-alert-success mb-4">
-          <CheckCircle2 size={17} className="shrink-0 mt-0.5" />
-          <span>Recovery link dispatched to <strong>{email}</strong>. Check your inbox.</span>
         </div>
       )}
 
@@ -364,7 +361,7 @@ export const DeveloperAuthStep: React.FC<DeveloperAuthStepProps> = ({
               className="dt-link"
               onClick={handleForgotPassword}
             >
-              Forgot password?
+              Forgot Password?
             </button>
           </div>
         )}
@@ -427,6 +424,8 @@ export const DeveloperAuthStep: React.FC<DeveloperAuthStepProps> = ({
       <div className="dt-demo-note">
         💡 Technical Intelligence Engine: Connects with Supabase Auth & Codebase Schemas
       </div>
+        </>
+      )}
     </div>
   )
 }
