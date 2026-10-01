@@ -7,6 +7,7 @@ import { analysisService } from '../services/developer/analysisService'
 import { demoSeedService } from '../services/developer/demoSeedService'
 import { DeveloperSidebar, type DeveloperTab } from '../components/developer/DeveloperSidebar'
 import { DeveloperHeader } from '../components/developer/DeveloperHeader'
+import { Footer } from '../components/layout/Footer.tsx'
 import { ProjectModal } from '../components/developer/ProjectModal'
 import { DeveloperOverviewView } from './developer/DeveloperOverviewView'
 import { MyProjectsView } from './developer/MyProjectsView'
@@ -259,6 +260,7 @@ export const DeveloperDashboard: React.FC = () => {
             </>
           )}
         </main>
+        <Footer />
       </div>
 
       {/* Add / Edit Project Modal */}

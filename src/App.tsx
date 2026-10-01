@@ -15,6 +15,7 @@ import { Login } from './pages/Login.tsx'
 import { Notifications } from './pages/Notifications.tsx'
 import { ProjectDetail } from './pages/ProjectDetail.tsx'
 import { Projects } from './pages/Projects.tsx'
+import { ProductInfo } from './pages/ProductInfo.tsx'
 import { ScenarioSimulator } from './pages/ScenarioSimulator.tsx'
 import { SkillMatching } from './pages/SkillMatching.tsx'
 import { TeamBuilder } from './pages/TeamBuilder.tsx'
@@ -28,6 +29,9 @@ function App() {
           {/* Landing and Entry Experience */}
           <Route path="/" element={<CinematicIntro />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/terms" element={<ProductInfo />} />
+          <Route path="/privacy" element={<ProductInfo />} />
+          <Route path="/contact" element={<ProductInfo />} />
 
           {/* Developer Twin Workspace */}
           <Route
