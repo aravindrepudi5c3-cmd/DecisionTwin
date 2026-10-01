@@ -19,7 +19,6 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DataPage } from '../components/common/index.ts'
 import { employeeRecords, projectRecords } from '../services/workspaceData.ts'
-import { ManagerBackgroundVideo } from '../components/manager/ManagerBackgroundVideo.tsx'
 
 const riskOrder: Record<string, number> = { Low: 0, Medium: 1, High: 2, Critical: 3 }
 
@@ -223,7 +222,6 @@ export function Dashboard() {
 
   return (
     <div className="manager-dashboard-theme">
-      <ManagerBackgroundVideo />
       <DataPage eyebrow="Workspace overview" title="Decision Intelligence Command Center" description="Monitor organizational health, identify emerging risks, and simulate the impact of workforce decisions.">
       <section className="overview-shell">
         <div className="overview-header-row">
